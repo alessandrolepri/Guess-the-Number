@@ -6,12 +6,12 @@ import NumberContainer from '../component/NumberContainer';
 
 
 
-const genertateRandomBetween = (min, max, exclude) => {
+const generateRandomBetween = (min, max, exclude) => {
     min = Math.ceil(min);
     max = Math.floor(max);
     const rndNum = Math.floor(Math.random() * (max - min)) + min;
     if(rndNum === exclude) {
-        return genertateRandomBetween(min, max, exclude);
+        return generateRandomBetween(min, max, exclude);
     } else {
         return rndNum;
     }
@@ -20,7 +20,7 @@ const genertateRandomBetween = (min, max, exclude) => {
 const GameScreen = props => {
 
     const [ currentGuess, setCurrentGuess ] = useState(
-        genertateRandomBetween(1, 100, props.userChoice)
+        generateRandomBetween(1, 100, props.userChoice)
         );
 
         const [ rounds, setRounds ] = useState(0);
@@ -47,9 +47,9 @@ const GameScreen = props => {
             if (direction === 'lower') {
                 currentHight.current = currentGuess;
             } else {
-                currentLow = currentGuess;
+                currentLow.current = currentGuess;
             }
-            const nextNumber = genertateRandomBetween(currentLow.current, currentHight.current, currentGuess);
+            const nextNumber = generateRandomBetween(currentLow.current, currentHight.current, currentGuess);
             setCurrentGuess(nextNumber);
             setRounds(curRounds => curRounds + 1);
         };
@@ -62,8 +62,8 @@ const GameScreen = props => {
                         <Button title='LOWER' 
                         onPress={nextGuessHandler.bind(this, 'lower')} 
                         />
-                        < Button title = 'GREATER'
-                        onPress = {nextGuessHandler.bind(this, 'greater')}
+                        < Button title='GREATER'
+                        onPress={nextGuessHandler.bind(this, 'greater')}
                         />
                     </Card>
             </View>
