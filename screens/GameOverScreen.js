@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 
-const GameOverScreem = props => {
+const GameOverScreen = props => {
     return (
         <View style={styles.screen}>
             <Text>The Game is Over!</Text>
@@ -18,4 +18,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default GameScreen;
+export default GameOverScreen;
